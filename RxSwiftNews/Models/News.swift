@@ -12,12 +12,12 @@ struct News: Decodable {
     let description: String
 }
 
-struct ArticleList: Decodable {
-    let articles: [News]
+struct NewsAPIData: Decodable {
+    let news: [News]
 }
 
-extension ArticleList {
-    static var all: Resource<ArticleList> = {
+extension NewsAPIData {
+    static var all: Resource<NewsAPIData> = {
         let url = URL(string: "https://newsapi.org/v2/top-headlines?sources=bbc-news&conutry=tw&apiKey=0054b9c0af91488da4577c1bf6668b34")!
         return Resource(url: url)
     }()
