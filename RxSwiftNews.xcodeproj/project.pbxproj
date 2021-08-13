@@ -17,6 +17,7 @@
 		CEECC11726C2AE0D00157498 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11626C2AE0D00157498 /* News.swift */; };
 		CEECC11A26C2B29000157498 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */; };
 		CEECC11C26C2B5E000157498 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */; };
+		CEECC14726C66FDC00157498 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC14626C66FDC00157498 /* NewsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CEECC11626C2AE0D00157498 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
+		CEECC14626C66FDC00157498 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		CEECC0FE26C29E3400157498 /* RxSwiftNews */ = {
 			isa = PBXGroup;
 			children = (
+				CEECC14526C66F9600157498 /* ViewModels */,
 				CEECC11526C2ADF000157498 /* Models */,
 				CEECC11826C2B26D00157498 /* Cells */,
 				CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */,
@@ -114,6 +117,14 @@
 				CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		CEECC14526C66F9600157498 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CEECC14626C66FDC00157498 /* NewsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				CEECC11726C2AE0D00157498 /* News.swift in Sources */,
 				CEECC10026C29E3400157498 /* AppDelegate.swift in Sources */,
 				CEECC11C26C2B5E000157498 /* URLRequest+Extensions.swift in Sources */,
+				CEECC14726C66FDC00157498 /* NewsViewModel.swift in Sources */,
 				CEECC10226C29E3400157498 /* SceneDelegate.swift in Sources */,
 				CEECC11426C29F5500157498 /* NewsTableViewController.swift in Sources */,
 			);
