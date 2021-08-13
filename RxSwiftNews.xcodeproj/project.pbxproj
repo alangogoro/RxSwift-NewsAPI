@@ -15,7 +15,7 @@
 		CEECC10C26C29E3900157498 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEECC10A26C29E3900157498 /* LaunchScreen.storyboard */; };
 		CEECC11426C29F5500157498 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11326C29F5500157498 /* NewsTableViewController.swift */; };
 		CEECC11726C2AE0D00157498 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11626C2AE0D00157498 /* News.swift */; };
-		CEECC11A26C2B29000157498 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */; };
+		CEECC11A26C2B29000157498 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11926C2B29000157498 /* NewsTableViewCell.swift */; };
 		CEECC11C26C2B5E000157498 /* URLRequest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */; };
 		CEECC14726C66FDC00157498 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEECC14626C66FDC00157498 /* NewsViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -33,7 +33,7 @@
 		CEECC10D26C29E3900157498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEECC11326C29F5500157498 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		CEECC11626C2AE0D00157498 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		CEECC11926C2B29000157498 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extensions.swift"; sourceTree = "<group>"; };
 		CEECC14626C66FDC00157498 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,13 +88,13 @@
 		CEECC0FE26C29E3400157498 /* RxSwiftNews */ = {
 			isa = PBXGroup;
 			children = (
+				CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */,
 				CEECC14526C66F9600157498 /* ViewModels */,
 				CEECC11526C2ADF000157498 /* Models */,
+				CEECC14826C67F2800157498 /* Controllers */,
 				CEECC11826C2B26D00157498 /* Cells */,
-				CEECC11B26C2B5E000157498 /* URLRequest+Extensions.swift */,
 				CEECC0FF26C29E3400157498 /* AppDelegate.swift */,
 				CEECC10126C29E3400157498 /* SceneDelegate.swift */,
-				CEECC11326C29F5500157498 /* NewsTableViewController.swift */,
 				CEECC10526C29E3400157498 /* Main.storyboard */,
 				CEECC10826C29E3900157498 /* Assets.xcassets */,
 				CEECC10A26C29E3900157498 /* LaunchScreen.storyboard */,
@@ -114,7 +114,7 @@
 		CEECC11826C2B26D00157498 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CEECC11926C2B29000157498 /* ArticleTableViewCell.swift */,
+				CEECC11926C2B29000157498 /* NewsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -125,6 +125,14 @@
 				CEECC14626C66FDC00157498 /* NewsViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CEECC14826C67F2800157498 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEECC11326C29F5500157498 /* NewsTableViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEECC11A26C2B29000157498 /* ArticleTableViewCell.swift in Sources */,
+				CEECC11A26C2B29000157498 /* NewsTableViewCell.swift in Sources */,
 				CEECC11726C2AE0D00157498 /* News.swift in Sources */,
 				CEECC10026C29E3400157498 /* AppDelegate.swift in Sources */,
 				CEECC11C26C2B5E000157498 /* URLRequest+Extensions.swift in Sources */,
