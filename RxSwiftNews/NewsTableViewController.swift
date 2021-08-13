@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 class NewsTableViewController: UITableViewController {
-    private var news = [News]()
+    private var newsListViewModel: NewsListViewModel!
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -28,13 +28,15 @@ class NewsTableViewController: UITableViewController {
         /* ➡️ 取得解析完成的 Observable<NewsAPIData?>
          * 因為是 Observable，可以訂閱它捕捉結果 */
         URLRequest.load(resource: NewsAPIData.all)
-            .subscribe(onNext: { [weak self] result in
-                if let result = result {
-                    self?.news = result.news
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
+            .subscribe(onNext: { result in
+                
+                let newsAry = result.articles
+                self.newsListViewModel = NewsListViewModel(newsAry)
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
                 }
+                
             }).disposed(by: disposeBag)
     }
     
@@ -43,13 +45,22 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        news.count
+        return newsListViewModel == nil ? 0 : newsListViewModel.newsViewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleCell", for: indexPath) as? ArticleTableViewCell else { fatalError("ArticleTableViewCell does not exists") }
-        cell.titleLabel.text = news[indexPath.row].title
-        cell.descriptionLabel.text = news[indexPath.row].description
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? ArticleTableViewCell else { fatalError("ArticleTableViewCell does not exists") }
+        
+        let newsViewModel = newsListViewModel.newsAt(indexPath.row)
+        newsViewModel.title.asDriver(onErrorJustReturn: "")
+            .drive(cell.titleLabel.text)
+            .disposed(by: disposeBag)
+        newsViewModel.description.asDriver(onErrorJustReturn: "")
+            .drive(cell.descriptionLabel.text)
+            .disposed(by: disposeBag)
+        
+        //cell.titleLabel.text = news[indexPath.row].title
+        //cell.descriptionLabel.text = news[indexPath.row].description
         return cell
     }
 }
