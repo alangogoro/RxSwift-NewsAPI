@@ -9,11 +9,11 @@ import Foundation
 
 struct News: Decodable {
     let title: String
-    let description: String
+    let description: String?
 }
 
 struct NewsAPIData: Decodable {
-    let news: [News]
+    let articles: [News]
 }
 
 extension NewsAPIData {
