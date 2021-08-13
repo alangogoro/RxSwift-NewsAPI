@@ -13,7 +13,7 @@ struct News: Decodable {
 }
 
 struct NewsAPIData: Decodable {
-    let news: [News]
+    let articles: [News]
 }
 
 extension NewsAPIData {
