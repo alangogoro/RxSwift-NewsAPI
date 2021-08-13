@@ -29,11 +29,9 @@ class NewsTableViewController: UITableViewController {
          * 因為是 Observable，可以訂閱它捕捉結果 */
         URLRequest.load(resource: NewsAPIData.all)
             .subscribe(onNext: { [weak self] result in
-                if let result = result {
-                    self?.news = result.news
-                    DispatchQueue.main.async {
-                        self?.tableView.reloadData()
-                    }
+                self?.news = result.articles
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
                 }
             }).disposed(by: disposeBag)
     }
