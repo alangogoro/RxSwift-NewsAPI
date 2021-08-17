@@ -24,18 +24,18 @@ class NewsTableViewController: UITableViewController {
     
     // MARK: - Helpers
     private func populateNews() {
-        /* ➡️ 取得解析完成的 Observable<NewsAPIData?>
+        /* ➡️ 取得解析完成的 Observable<NewsAPIData>
          * 因為是 Observable，可以訂閱它捕捉結果 */
         URLRequest.load(resource: NewsAPIData.all)
             .subscribe(onNext: { newsApiData in
-                
+                // 利用 API 取得天氣資料
                 let newsAry = newsApiData.articles
+                // ➡️ 用天氣資料生成 本頁的 TableView-ViewModel
                 self.newsListViewModel = NewsListViewModel(newsAry)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                
             }).disposed(by: disposeBag)
     }
     
@@ -49,10 +49,11 @@ class NewsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsTableViewCell else {
-            fatalError("ArticleTableViewCell does not exists")
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsTableViewCell else { fatalError("NewsTableViewCell does not exists") }
         
+        /* 由於 NewsViewModel 的 title, description 屬性皆是 Observable 類型
+         * 可以利用 asDriver(onErrorJustReturn: ) 轉換成 Driver
+         * 再利用 .drive(ui.RX.text) 驅動 UI 更新                   */
         let newsViewModel = newsListViewModel.newsAt(indexPath.row)
         newsViewModel.title.asDriver(onErrorJustReturn: "")
             .drive(cell.titleLabel.rx.text)
@@ -61,8 +62,8 @@ class NewsTableViewController: UITableViewController {
             .drive(cell.descriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        //原本 MVC 的寫法
-        //cell.titleLabel.text = news[indexPath.row].title
+        // 原本 MVC 的寫法
+        //cell.titleLabel.text       = news[indexPath.row].title
         //cell.descriptionLabel.text = news[indexPath.row].description
         return cell
     }
