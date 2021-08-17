@@ -7,11 +7,13 @@
 
 import Foundation
 
+/// 解析 `NewsAPI` JSON 內層資料
 struct News: Decodable {
     let title: String
     let description: String?
 }
 
+/// 解析 `NewsAPI` JSON 外層資料
 struct NewsAPIData: Decodable {
     let articles: [News]
 }
